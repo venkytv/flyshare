@@ -8,7 +8,12 @@ The backend database is on [Google Cloud Storage](https://cloud.google.com/stora
    * Set up a [Google Cloud Storage](https://cloud.google.com/storage) bucket for the backend
    * Set up a [service account](https://cloud.google.com/storage/docs/projects#service-accounts) with access to the bucket
    * [Generate a key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) for the service account and download it
-   * Deploy using `flyctl`
+   * Create a volume for the database
+       ```bash
+       $ REGION=fra  # Pick the region you want for this
+       $ flyctl volumes create flyshare_db -r "$REGION" -s 1
+       ```
+   * Deploy the app using `flyctl`
        ```bash
        ## Generate a unique name for the app
        $ APP_NAME=$( ls -id . | awk '{printf("flyshare-%s-%d\n", ENVIRON["USER"], $1)}' )
