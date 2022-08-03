@@ -12,6 +12,8 @@ The backend database is on [Google Cloud Storage](https://cloud.google.com/stora
        ```bash
        ## Generate a unique name for the app
        $ APP_NAME=$( ls -id . | awk '{printf("flyshare-%s-%d\n", ENVIRON["USER"], $1)}' )
+       
+       ## Launch the app
        $ flyctl launch --name "$APP_NAME" --no-deploy
        ```
    * Add the downloaded service account key as a secret using `flyctl`
@@ -19,10 +21,10 @@ The backend database is on [Google Cloud Storage](https://cloud.google.com/stora
         $ flyctl secrets set GCS_CREDS="$( cat my-service-account-key.json )"
         ```
    * Deploy
-         ```bash
-         $ flyctl deploy
-         $ flyctl open
-         ```
+        ```bash
+        $ flyctl deploy
+        $ flyctl open
+        ```
 
 ## Managing User Accounts
 
